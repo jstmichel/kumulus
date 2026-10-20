@@ -92,6 +92,11 @@ kumulus/
   command line keeps working with the same accounts.
 - Kumulus settings (pairs, mounts, intervals) live in `~/.config/kumulusrc` (KConfig).
 - Application id: `me.kodara.kumulus` (desktop file, metainfo, app icon).
+- **KDE first, desktop-neutral engine** (decided 2026-10-20): the window and tray are
+  Kirigami and follow the Plasma theme; no custom visual identity. `kumulusd` and
+  `kumulusctl` depend on nothing specific to Plasma (freedesktop notifications, a documented
+  D-Bus API), so a native client for another desktop (GTK/libadwaita for GNOME) can be added
+  later over the same API.
 
 ## User interface
 
