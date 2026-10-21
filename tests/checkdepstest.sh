@@ -63,7 +63,7 @@ check "one missing" 1 "missing or too old: kirigami"
 echo "kirigami 99.0-1" >> "$FAKE_PACKAGES"
 
 # #2 R3: a dependency older than its minimum is named too.
-sed -i 's/^rclone .*/rclone 1.68.2-1/' "$FAKE_PACKAGES"
+sed -i 's/^rclone .*/rclone 1.74.0-1/' "$FAKE_PACKAGES"
 run
 check "too old" 1 "missing or too old: rclone"
 sed -i 's/^rclone .*/rclone 99.0-1/' "$FAKE_PACKAGES"

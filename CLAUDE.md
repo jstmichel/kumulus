@@ -36,7 +36,8 @@ has validated it.
 ## Environment
 
 - Workstation: CachyOS (Arch), KDE Plasma 6 on Wayland, shell **fish**, user `jstmichel`.
-- rclone from the Arch package (`rclone` ≥ 1.69, needed for the `iclouddrive` backend).
+- rclone from the Arch package, at least the minimum in `scripts/check-deps.sh` (the version
+  Kumulus is tested with; the `iclouddrive` backend itself arrived in 1.69).
 - `fuse3` for mounts.
 - Sibling project with the same stack and conventions: https://github.com/jstmichel/kobold
 

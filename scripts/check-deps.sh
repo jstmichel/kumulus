@@ -30,8 +30,9 @@ DEPENDENCIES=(
     "kiconthemes|6.0|runtime"
     "kirigami|6.0|runtime"
     "kirigami-addons|1.0|runtime"
-    # The iclouddrive backend arrived in rclone 1.69.
-    "rclone|1.69|runtime"
+    # The version Kumulus is tested with, not the first with the iclouddrive backend (1.69):
+    # Apple's API changes and older versions may no longer work. Raised deliberately (#2).
+    "rclone|1.75|runtime"
     "fuse3||runtime"
     "clang||check"
     "desktop-file-utils||check"
