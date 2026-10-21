@@ -18,3 +18,7 @@ target_compile_definitions(clitest PRIVATE
     KUMULUS_EXPECTED_VERSION="${PROJECT_VERSION}"
     KUMULUSCTL_PATH="$<TARGET_FILE:kumulusctl>"
 )
+
+# #2 R3: scripts/check-deps.sh, against a fake pacman.
+add_test(NAME checkdepstest
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/checkdepstest.sh ${PROJECT_SOURCE_DIR}/scripts/check-deps.sh)
