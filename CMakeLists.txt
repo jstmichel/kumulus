@@ -22,6 +22,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(ECMSetupVersion)
 include(ECMAddTests)
+include(ECMQmlModule)
 include(FeatureSummary)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -29,15 +30,39 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Required packages are looked up without REQUIRED so that feature_summary can report
 # every missing package at once, each with its Arch package name.
-set(KUMULUS_QT_COMPONENTS Core)
+set(KUMULUS_QT_COMPONENTS Core Gui Widgets Qml Quick QuickControls2)
 if(BUILD_TESTING)
     list(APPEND KUMULUS_QT_COMPONENTS Test)
 endif()
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG COMPONENTS ${KUMULUS_QT_COMPONENTS})
 set_package_properties(Qt6 PROPERTIES
     TYPE REQUIRED
-    DESCRIPTION "Arch package: qt6-base"
-    PURPOSE "Core library and tests")
+    DESCRIPTION "Arch packages: qt6-base, qt6-declarative"
+    PURPOSE "Core library, application window and tests")
+
+find_package(KF6CoreAddons ${KF_MIN_VERSION} CONFIG)
+set_package_properties(KF6CoreAddons PROPERTIES
+    TYPE REQUIRED DESCRIPTION "Arch package: kcoreaddons" PURPOSE "Application metadata")
+
+find_package(KF6I18n ${KF_MIN_VERSION} CONFIG)
+set_package_properties(KF6I18n PROPERTIES
+    TYPE REQUIRED DESCRIPTION "Arch package: ki18n" PURPOSE "Translations")
+
+find_package(KF6Crash ${KF_MIN_VERSION} CONFIG)
+set_package_properties(KF6Crash PROPERTIES
+    TYPE REQUIRED DESCRIPTION "Arch package: kcrash" PURPOSE "Crash handling")
+
+find_package(KF6IconThemes ${KF_MIN_VERSION} CONFIG)
+set_package_properties(KF6IconThemes PROPERTIES
+    TYPE REQUIRED DESCRIPTION "Arch package: kiconthemes" PURPOSE "Plasma icon integration in the application")
+
+find_package(KF6Kirigami ${KF_MIN_VERSION} CONFIG)
+set_package_properties(KF6Kirigami PROPERTIES
+    TYPE REQUIRED DESCRIPTION "Arch package: kirigami" PURPOSE "Application user interface")
+
+find_package(KF6KirigamiAddons 1.0 CONFIG)
+set_package_properties(KF6KirigamiAddons PROPERTIES
+    TYPE RUNTIME DESCRIPTION "Arch package: kirigami-addons" PURPOSE "About page")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
