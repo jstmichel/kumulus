@@ -212,12 +212,10 @@ Settled by the experiment #1 (findings on #1, recommendation on #17):
 
 ## Conventions
 
+- **Code:** follow [`docs/coding-guidelines.md`](docs/coding-guidelines.md) (C++, QML, tests,
+  CMake, comments); `scripts/check-format.sh` passes. Read it before writing code.
 - Code, comments, commit messages and documentation: neutral English. The app is translated
   (`i18n`/`i18nc`); French is kept complete.
 - Commits: Conventional Commits, signed; no AI attribution anywhere (kirakit rules).
-- KDE style: repository `.clang-format`, `m_` members, explicit `Q_OBJECT`/`Q_PROPERTY`.
-- Never block the UI thread: every RC call is asynchronous (`QNetworkAccessManager`).
-- Tests never touch a real account, the real `rclone.conf` or the real home: fake RC server,
-  temporary `XDG_*` folders, temporary local trees. Offscreen (`QT_QPA_PLATFORM=offscreen`).
-- No personal data (Apple ID, paths with real names, account ids) in code, tests or issues.
+- No personal data (Apple ID, paths with real names, account ids) in issues either.
 - Build and tests: `cmake --preset dev && cmake --build --preset dev && ctest --preset dev`.
